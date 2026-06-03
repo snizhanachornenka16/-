@@ -62,6 +62,10 @@ def main():
 
     uploaded_file = st.sidebar.file_uploader("Завантажте CSV-файл", type="csv")
 
+    # Якщо файл не завантажено через uploader — використовуємо network_logs.csv із кореня проекту
+    if uploaded_file is None:
+        uploaded_file = "network_logs.csv"
+
     if uploaded_file is not None:
         raw_data = load_data(uploaded_file)
         if raw_data is not None:
